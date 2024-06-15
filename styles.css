@@ -27,12 +27,14 @@ body {
     border-left: 1px solid #ccc;
   }
   
-  .submit-button-container {
+  .submit-button-container,
+  .payment-button-container {
     text-align: center;
     margin-top: 20px;
   }
   
-  h1, h2 {
+  h1,
+  h2 {
     color: #333;
   }
   
@@ -85,5 +87,26 @@ body {
   .activity-message {
     margin-top: 10px;
     color: #007bff;
+  }
+  
+  .final-cost {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 1.2em;
+  }
+  
+  .payment-button-container {
+    position: fixed;
+    bottom: 20px;
+    left: calc(50% - 100px); /* Adjust as needed for centering */
+    width: 200px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment-button-container button {
+    width: 100%;
   }
   

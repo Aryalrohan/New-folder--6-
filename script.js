@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const fixedPackageCost = 230;
     let additionalActivitiesCost = 0;
     let totalCost = fixedPackageCost;
+    let isFirstBooking = true; // Flag to track if it's the first booking
     const discountAmount = 50;
   
     function calculateAdditionalActivitiesCost() {
@@ -77,12 +78,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   
     function applyDiscount() {
-      const finalCost = totalCost - discountAmount;
+      const finalCost = totalCost - (isFirstBooking ? discountAmount : 0);
       document.getElementById('total-cost').textContent = `Total Cost: $${totalCost}`;
-      document.getElementById('discount').style.display = 'block';
-      document.getElementById('discount').textContent = `Discount for First Booking: $${discountAmount}`;
-      document.getElementById('final-cost').style.display = 'block';
-      document.getElementById('final-cost').textContent = `Final Cost: $${finalCost}`;
+      
+      if (isFirstBooking) {
+        document.getElementById('discount').style.display = 'block';
+        document.getElementById('discount').textContent = `Discount for First Booking: $${discountAmount}`;
+        isFirstBooking = false; // Set isFirstBooking to false after applying discount for the first time
+      }
+  
+     
+  
+      // Show the payment button and final cost
+      document.getElementById('payment-button-container').style.display = 'block';
+      document.getElementById('final-cost-value').textContent = `$${finalCost}`;
+  
+      // Congratulate the user for their first booking
+      if (isFirstBooking) {
+        const congratulationMessage = document.createElement('p');
+        congratulationMessage.textContent = 'Congratulations! This is your first booking with us. Enjoy the discount!';
+        congratulationMessage.style.color = '#4CAF50'; // Green color for emphasis
+        document.getElementById('cost-summary').appendChild(congratulationMessage);
+      }
     }
   
     function generateDaySections() {
@@ -172,27 +189,12 @@ document.addEventListener('DOMContentLoaded', function() {
       updateAdditionalActivitiesSidebar();
     }
   
-    document.getElementById('add-day-button').addEventListener('click', function() {
-      const newDay = {
-        title: `Day ${days.length + 1}: New Day`,
-        activities: [],
-        placesToVisit: ''
-      };
-      days.push(newDay);
-      generateDaySections();
-    });
-  
-    document.getElementById('remove-day-button').addEventListener('click', function() {
-      if (days.length > 1) {
-        days.pop();
-        generateDaySections();
-      } else {
-        alert('Cannot remove the last day. At least one day must be present.');
-      }
-    });
-  
     document.getElementById('submit-button').addEventListener('click', function() {
       applyDiscount();
+    });
+  
+    document.getElementById('pay-button').addEventListener('click', function() {
+      alert('Payment processed successfully!');
     });
   
     generateDaySections();
