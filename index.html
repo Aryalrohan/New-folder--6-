@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holiday Package</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1 id="package-title">7-Day Holiday Package</h1>
+    
+    <!-- Day sections will be dynamically generated here -->
+    
+    <!-- Buttons for adding/removing days -->
+    <button id="add-day-button">Add Day</button>
+    <button id="remove-day-button">Remove Last Day</button>
+  </div>
+
+  <!-- Sidebar for additional activities -->
+  <div id="additional-activities-sidebar" class="sidebar">
+    <h2>Additional Activities</h2>
+    <ul id="additional-activities-list">
+      <!-- Additional activities will be dynamically added here -->
+    </ul>
+    <div class="cost-summary" id="cost-summary" style="display: none;">
+      <p id="package-cost">Package Cost: $230</p>
+      <p id="additional-activity-cost">Additional Activities Cost: $0</p>
+      <p id="total-cost">Total Cost: $0</p>
+      <p id="discount" style="display: none;">Discount for First Booking: $50</p>
+      <p id="final-cost" style="display: none;">Final Cost: $0</p>
+    </div>
+  </div>
+
+  <!-- Submit button section -->
+  <div class="submit-button-container" id="submit-button-container" style="display: none;">
+    <button id="submit-button">Submit</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
